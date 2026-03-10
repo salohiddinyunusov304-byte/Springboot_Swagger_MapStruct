@@ -2,6 +2,8 @@ package uz.pdp.springboot_swagger_mapstruct_.payload;
 
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -12,4 +14,5 @@ public class PostDto {
     private String title;
     private String content;
     private Integer order;
+    private LocalDateTime createdAt = LocalDateTime.now();
 }
