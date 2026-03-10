@@ -9,7 +9,8 @@ import lombok.*;
 @ToString
 @Builder
 public class Post {
-    private Integer id;
-    private String title;
-    private String content;
+    private String id;
+    private String p_title;
+    private String p_content;
+    private String order;
 }
