@@ -14,5 +14,5 @@ public class ProjectColumnDto {
     private Integer id;
     private String pc_name;
     private String description;
-    private String createdAt ;
+    private String createdAt;
 }
