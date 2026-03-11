@@ -58,4 +58,15 @@ public class GlobalExceptionHandler {
                         .errorPath(request.getRequestURI())
                         .build());
     }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<Object> handlerException(Exception ex, HttpServletRequest request) {
+        return ResponseEntity
+                .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(ErrorDto.builder()
+                        .errorCode(500)
+                        .errorPath(request.getRequestURI())
+                        .errorMessage(ex.getMessage())
+                        .build());
+    }
 }

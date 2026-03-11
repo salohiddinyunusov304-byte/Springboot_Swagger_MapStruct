@@ -74,19 +74,8 @@ public class ProductController {
     }
 
     @Operation(
-            summary = "Get product by id"
-    )
-    @ApiResponses(
-            value = {
-                    @ApiResponse(
-                            responseCode = "200",
-                            description = "Product topildi"
-                    ),
-                    @ApiResponse(
-                            responseCode = "404",
-                            description = "Product topilmadi"
-                    )
-            }
+            summary = "Find products between prices",
+            description = "This API use to find product between given prices"
     )
     @GetMapping("/findProductsBetweenPrices")
     public BaseResponse<List<ProductResponse>> findProductsBetweenPrices(
