@@ -1,27 +1,25 @@
 package uz.pdp.springboot_swagger_mapstruct_.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import uz.pdp.springboot_swagger_mapstruct_.entity.Post;
-import uz.pdp.springboot_swagger_mapstruct_.mapper.PostMapper;
-import uz.pdp.springboot_swagger_mapstruct_.payload.PostDto;
+import org.springframework.web.bind.annotation.*;
+import uz.pdp.springboot_swagger_mapstruct_.entity.Person;
+import uz.pdp.springboot_swagger_mapstruct_.mapper.PersonMapper;
+import uz.pdp.springboot_swagger_mapstruct_.payload.AddressDto;
+import uz.pdp.springboot_swagger_mapstruct_.payload.PassportDto;
+import uz.pdp.springboot_swagger_mapstruct_.payload.PersonDto;
 
 @RestController
-@RequestMapping("/api/posts")
+@RequestMapping("/api/persons")
 @RequiredArgsConstructor
 public class PersonController {
-    private final PostMapper postMapper;
+    private final PersonMapper personMapper;
 
-    @PostMapping("/toEntity")
-    public Post toEntity(@RequestBody PostDto postDto) {
-        return postMapper.toEntity(postDto);
-    }
-
-    @PostMapping("/toDto")
-    public PostDto toDto(@RequestBody Post post) {
-        return postMapper.toDto(post);
+    @GetMapping("/toEntity")
+    public Person toEntity() {
+        return personMapper.toEntity(
+                new PersonDto("John Doue", 30),
+                new AddressDto("Tashkent", "Mirabad", "Afrosiyob street"),
+                new PassportDto("AC", "2040614")
+        );
     }
 }
