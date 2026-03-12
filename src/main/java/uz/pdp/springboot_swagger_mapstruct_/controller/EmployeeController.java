@@ -2,24 +2,24 @@ package uz.pdp.springboot_swagger_mapstruct_.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import uz.pdp.springboot_swagger_mapstruct_.entity.DayOfWeek;
 import uz.pdp.springboot_swagger_mapstruct_.entity.Employee;
-import uz.pdp.springboot_swagger_mapstruct_.mapper.EnumMapper;
-import uz.pdp.springboot_swagger_mapstruct_.payload.HaftaKunlari;
+import uz.pdp.springboot_swagger_mapstruct_.mapper.EmployeeMapper;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/employee")
 @RequiredArgsConstructor
 public class EmployeeController {
-    private final EnumMapper enumMapper;
+    private final EmployeeMapper employeeMapper;
 
-    @PostMapping("/toDayOfWeek")
-    public DayOfWeek toDayOfWeek() {
-        return enumMapper.toDayOfWeek(HaftaKunlari.DUSHANBA);
+    @GetMapping("/toEntityByMap")
+    public Employee toEntityByMap(@RequestBody Map<String, String> map) {
+        return employeeMapper.toEntityByMap(map);
     }
 
-    @PostMapping("/toHaftaKunlari")
-    public HaftaKunlari toHaftaKunlari() {
-        return enumMapper.toHaftaKunlari(DayOfWeek.WEDNESDAY);
+    @GetMapping("/toEntityByMap2")
+    public Employee toEntityByMap2(@RequestBody Map<String, Object> map) {
+        return employeeMapper.toEntityByMap2(map);
     }
 }
